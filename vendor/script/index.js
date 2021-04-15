@@ -12,7 +12,7 @@ let i = 0
     }
     return a;
 }
-while(i < 500) {
+while(i < 500) { 
     array.push(i)
     i++
 }

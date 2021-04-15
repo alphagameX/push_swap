@@ -2,15 +2,15 @@
 PS = push_swap
 CH = checker
 
-FILE = $(wildcard src/*.c)
-
-FILE_PS = $(wildcard src/ps/*.c) $(FILE)
-FILE_CH = $(wildcard src/ch/*.c) $(FILE)
-
+FILE =  $(wildcard src/*.c) \
+		$(wildcard src/pile/*.c) \
+		$(wildcard src/garbage/*.c) 
 
 all:
-	@gcc $(FILE_PS) -o $(PS) -Lvendor/libft -l ft
-	@gcc $(FILE_CH) -o $(CH) -Lvendor/libft -l ft
+	@gcc -o $(PS) $(FILE) -Lvendor/libft -l ft 
 
-tester:
+test:
 	@node vendor/script/index.js
+
+visual:
+	python3 push_swap_visualizer/pyviz.py `ruby -e "puts (-200..200).to_a.shuffle.join(' ')"`
