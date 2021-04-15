@@ -31,6 +31,7 @@ typedef struct s_dir {
     int dir_b;
     int move_nb_a; 
     int move_nb_b;
+    int move_total;
 
     int value;
 
@@ -65,7 +66,7 @@ void ss(t_ps *app);
 void rr(t_pile **pile, int size);
 void rrs(t_pile **pile_a, t_pile **pile_b, int *size_a, int *size_b);
 
-/*CODEX*/
+
 t_garbage *greater_than(t_pile *current, int size);
 int fast_r(t_pile **current, int size, int search);
 void estimate_rotate(t_pile **pile_a, t_pile **pile_b, int *size_a, int *size_b);

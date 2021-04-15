@@ -4,7 +4,7 @@ CH = checker
 
 FILE =  $(wildcard src/*.c) \
 		$(wildcard src/pile/*.c) \
-		$(wildcard src/garbage/*.c) 
+		$(wildcard src/moving/*.c) 
 
 all:
 	@gcc -o $(PS) $(FILE) -Lvendor/libft -l ft 

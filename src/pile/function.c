@@ -92,3 +92,18 @@ int min_value(t_pile *current, int size) {
     }
     return (res);
 }
+
+int is_sorted(t_pile *current, int size) {
+    int i;
+    t_pile *ptr;
+
+    i = 0;
+    ptr = current;
+    while(i < size) {
+        if(ptr > ptr->next)
+            return (0);
+        ptr = ptr->next;
+        i++;
+    }
+    return (1);
+}

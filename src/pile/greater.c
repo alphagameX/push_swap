@@ -23,21 +23,6 @@ t_garbage *not_sorted_pile(t_pile *current, int size, int dir) {
     return (tmp);
 }
 
-int is_sorted(t_pile *current, int size) {
-    int i;
-    t_pile *ptr;
-
-    i = 0;
-    ptr = current;
-    while(i < size) {
-        if(ptr > ptr->next)
-            return (0);
-        ptr = ptr->next;
-        i++;
-    }
-    return (1);
-}
- 
 
 t_garbage *greater_than(t_pile *current, int size) {
 
