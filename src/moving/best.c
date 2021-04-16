@@ -6,11 +6,11 @@ void execute_move(t_dir best,t_pile **pile_a,t_pile **pile_b,int *size_a, int *s
         while(best.move_nb_b != 0 && best.move_nb_a != 0) {
             if(best.dir_a == 1) {
                 rs(pile_a, pile_b, size_a, size_b);
-                ft_printf("rr\n");
+                ft_putstr("rr\n");
             }
             else if(best.dir_a == -1) {
                 rrs(pile_a, pile_b, size_a, size_b);
-                ft_printf("rrr\n");
+                ft_putstr("rrr\n");
             }
             best.move_nb_a--;
             best.move_nb_b--;
@@ -19,28 +19,28 @@ void execute_move(t_dir best,t_pile **pile_a,t_pile **pile_b,int *size_a, int *s
     while(best.move_nb_a != 0) {
         if(best.dir_a == 1) {
             r(pile_a, *size_a);
-            ft_printf("ra\n");
+            ft_putstr("ra\n");
         }
         else if(best.dir_a == -1) {
             rr(pile_a, *size_a);
-            ft_printf("rra\n");
+            ft_putstr("rra\n");
         }
         best.move_nb_a--;
     }
     while(best.move_nb_b != 0) {
         if(best.dir_b == 1) {
             r(pile_b, *size_b);
-            ft_printf("rb\n");
+            ft_putstr("rb\n");
         }
         else if(best.dir_b == -1) {
             rr(pile_b, *size_b);
-            ft_printf("rrb\n");
+            ft_putstr("rrb\n");
         }
         best.move_nb_b--;
     }
 
     p(pile_a, pile_b, size_a, size_b);
-    ft_printf("pa\n");
+    ft_putstr("pa\n");
     // if((*pile_a)->value > (*pile_a)->next->value) {
     //     s(pile_a, *size_a);
     //     ft_printf("sa\n");

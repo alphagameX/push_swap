@@ -1,64 +1,59 @@
 #include "../global.h"
 
-t_garbage *not_sorted_pile(t_pile *current, int size, int dir) {
-    
-    t_garbage *tmp;
+void not_sorted_pile(t_pile *current, int size, t_garbage *new) {
+
     int i = 0;
     int value = current->value;
 
-    if((tmp = malloc(sizeof(t_garbage))) == NULL)
-        return (NULL);
-    
-    tmp->garb = init_pile();
-    tmp->size_garb = 0;
+    if(new->size_garb > 0)
+        free_pile(&new->garb, new->size_garb);
 
+    new->garb = init_pile();
+    new->size_garb = 0;
     while(i < size) {
         if(current->value <= value)
              value = current->value;
         else
-            add_to_end(&tmp->garb, &tmp->size_garb, current->value);
+            add_to_end(&new->garb, &new->size_garb, current->value);
         i++;
         current = current->prev;
     }
-    return (tmp);
 }
 
+void init_garbage(t_garbage *new) {
+    new->garb = init_pile();
+    new->size_garb = 0;
+}
 
-t_garbage *greater_than(t_pile *current, int size) {
+void greater_than(t_pile *current, int size, t_garbage *best) {
 
-    t_garbage **new;
-    t_pile *tmp;
-    int e = 0;
-    int low; 
-    int index;
+    t_garbage new;
+    t_pile *ptr;
+    int i;
+    int best_size;
+    int best_index;
 
-    if((new = malloc(sizeof(t_garbage*) * size)) == NULL)
-        return(NULL);
-    
-    int i = 0;
 
+    i = 0;
+    init_garbage(&new);
+    best_size = size;
+    best_index = 0;
+    ptr = current;
     while(i < size) {
-        new[i] = not_sorted_pile(current, size, -1);
+        not_sorted_pile(ptr, size, &new);
+        if(new.size_garb < best_size) {
+            best_size = new.size_garb;
+            best_index = i;
+        }
+        ptr = ptr->next;
+        i++;
+    }
+    i = 0;
+    while(i != best_index) {
         current = current->next;
         i++;
     }
-
-    i = 0;
-    low = new[i]->size_garb;
-    index = i;
-
-    while(i < size) {
-        e = 0;
-        tmp = new[i]->garb;
-        while(e < new[i]->size_garb) {
-            if(new[i]->size_garb < low) {
-                index = i;
-                low = new[i]->size_garb;
-            }
-            tmp = tmp->next;
-            e++;
-        }
-        i++;
-    }
-    return (new[index]);
+    not_sorted_pile(current, size, &new);
+    best->garb = new.garb;
+    best->size_garb = new.size_garb;
 }

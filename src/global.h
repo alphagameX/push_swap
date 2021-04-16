@@ -13,7 +13,6 @@ typedef struct s_pile{
 
 typedef struct s_garbage {
     t_pile *garb;
-    int start;
     int size_garb;
 }t_garbage;
 
@@ -55,6 +54,7 @@ void set_index(t_pile **current, int size);
 int min_value(t_pile *current, int size);
 t_garbage *cpy_pile(t_pile *current, int size);
 int is_sorted(t_pile *current, int size);
+void clear_pile_a(t_ps *app, t_garbage *new);
 
 
 /*RULES*/
@@ -67,7 +67,7 @@ void rr(t_pile **pile, int size);
 void rrs(t_pile **pile_a, t_pile **pile_b, int *size_a, int *size_b);
 
 
-t_garbage *greater_than(t_pile *current, int size);
+void greater_than(t_pile *current, int size, t_garbage *best);
 int fast_r(t_pile **current, int size, int search);
 void estimate_rotate(t_pile **pile_a, t_pile **pile_b, int *size_a, int *size_b);
 
