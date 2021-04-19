@@ -1,4 +1,4 @@
-#include "../global.h"
+#include "../../global.h"
 
 int better_garbage(t_pile **pile, int size, t_garbage **new) {
     t_garbage tmp;
@@ -13,28 +13,6 @@ int better_garbage(t_pile **pile, int size, t_garbage **new) {
     s(pile, size);
     return (0); 
 }
-
-int inside_garbage(int value, t_garbage *new) {
-    int i;
-    t_pile *ptr;
-    i = 0;
-
-    ptr = new->garb;
-    while(i < new->size_garb) {
-        if(value == ptr->value)
-            return (1);
-        i++;
-        ptr = ptr->next;
-    }
-    return (0);
-}
-
-void remove_garbage_value_at(int value, t_pile **pile, int *size) {
-    while((*pile)->value != value)
-        r(pile, *size);
-    remove_to_start(pile, size);
-    
-} 
 
 void clear_pile_a(t_ps *app, t_garbage *new) {    
 

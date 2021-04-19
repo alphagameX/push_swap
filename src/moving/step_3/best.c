@@ -1,4 +1,4 @@
-#include "../global.h"
+#include "../../global.h"
 
 
 void execute_move(t_dir best,t_pile **pile_a,t_pile **pile_b,int *size_a, int *size_b) {

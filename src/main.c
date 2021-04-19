@@ -1,54 +1,29 @@
 #include "global.h"
 
 int main(int argv, char **argc) {
-
 	t_ps app;
-	int arg;
+	t_garbage new;
 
 	if(argv < 2)
 		return (0);
-	app.a = init_pile();
-	app.b = init_pile();
-
-	app.size_a = 0;
-	app.size_b = 0;
-
-	arg = 1;
-	while(arg < argv) {
-		add_to_end(&app.a, &app.size_a, ft_atoi(argc[arg]));
-		arg++;
-	}   
-	if(has_duplicate(app.a, app.size_a) == true)
-		return (false);
-
+	init_app(&app);
+	parse_args(&app.a, &app.size_a, argv, argc);
 	create_loop(&app.a, app.size_a);
-
-	if(is_sorted(app.a, app.size_a) == 1) {
+	if(is_sorted(app.a, app.size_a) == 1)
 		return (1);
-	}
-
-	t_garbage new;
-	
 	greater_than(app.a, app.size_a, &new);
 	clear_pile_a(&app, &new);
-
-
 	while(app.size_b != 0) {
 		create_loop(&app.a, app.size_a);
 		create_loop(&app.b, app.size_b);
 		estimate_rotate(&app.a, &app.b, &app.size_a, &app.size_b);
 	}
-
 	fast_r(&app.a, app.size_a, min_value(app.a, app.size_a));
 
-
-	ft_printf("\n\n\n---PILE A---\n");
-	ft_printf("len : %d\n", show_pile(app.a, app.size_a));
-
-	ft_printf("---PILE B---\n");
-	ft_printf("len : %d\n", show_pile(app.b, app.size_b));
+	// show_pile(app.a, app.size_a);
 
 	free_pile(&app.a, app.size_a);
 	free_pile(&app.b, app.size_b);
+	// system("leaks push_swap");
 	return (0);
 }

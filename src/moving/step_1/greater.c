@@ -1,4 +1,4 @@
-#include "../global.h"
+#include "../../global.h"
 
 void not_sorted_pile(t_pile *current, int size, t_garbage *new) {
 
@@ -18,11 +18,6 @@ void not_sorted_pile(t_pile *current, int size, t_garbage *new) {
         i++;
         current = current->prev;
     }
-}
-
-void init_garbage(t_garbage *new) {
-    new->garb = init_pile();
-    new->size_garb = 0;
 }
 
 void greater_than(t_pile *current, int size, t_garbage *best) {

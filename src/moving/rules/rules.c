@@ -1,4 +1,4 @@
-#include "../global.h"
+#include "../../global.h"
 
 
 void s(t_pile **pile, int size) {
