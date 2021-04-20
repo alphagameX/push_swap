@@ -1,7 +1,7 @@
 #ifndef GLOBAL_HEADER
 #define GLOBAL_HEADER
 
-#include "../vendor/libft/libft.h"
+#include "../libft/libft.h"
 #include <stdbool.h>
 
 typedef struct s_pile{

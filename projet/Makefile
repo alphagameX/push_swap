@@ -21,9 +21,9 @@ CHECK = $(PILE) \
 		
 
 all:
-	@make all -C vendor/libft
-	@gcc -o $(PS) $(PUSH) -Lvendor/libft -l ft 
-	@gcc -o $(CH) $(CHECK) -Lvendor/libft -l ft 
+	@make all -C libft
+	@gcc -o $(PS) $(PUSH) -Llibft -l ft 
+	@gcc -o $(CH) $(CHECK) -Llibft -l ft 
 
 fclean:
 	@make fclean -C vendor/libft
@@ -39,9 +39,6 @@ valgrind:
 	@sh ../valgrind/run.sh
 	
 
-#TEMP
-test:
-	@node vendor/script/index.js
 
 visual:
 	python3 push_swap_visualizer/pyviz.py `ruby -e "puts (-200..200).to_a.shuffle.join(' ')"`
