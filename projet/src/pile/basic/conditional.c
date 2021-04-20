@@ -23,12 +23,15 @@ bool has_duplicate(t_pile *pile, int size) {
 
 int is_sorted(t_pile *current, int size) {
     t_pile *ptr;
+    int i;
 
-    ptr = current->next;
-    while(ptr != current) {
-        if(ptr > ptr->next)
+    i = 0;
+    ptr = current;
+    while(i < size - 1) {
+        if(ptr->value > ptr->next->value) 
             return (0);
         ptr = ptr->next;
+        i++;
     }
     return (1);
 }

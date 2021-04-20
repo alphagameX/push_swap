@@ -8,9 +8,9 @@ int main(int argv, char **argc) {
 		return (0);
 	init_app(&app);
 	parse_args(&app.a, &app.size_a, argv, argc);
-	create_loop(&app.a, app.size_a);
 	if(is_sorted(app.a, app.size_a) == 1)
 		return (1);
+	create_loop(&app.a, app.size_a);
 	greater_than(app.a, app.size_a, &new);
 	clear_pile_a(&app, &new);
 	while(app.size_b != 0) {
@@ -20,7 +20,6 @@ int main(int argv, char **argc) {
 	}
 	fast_r(&app.a, app.size_a, min_value(app.a, app.size_a));
 
-	// show_pile(app.a, app.size_a);
 
 	free_pile(&app.a, app.size_a);
 	free_pile(&app.b, app.size_b);
