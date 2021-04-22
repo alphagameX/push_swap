@@ -18,6 +18,12 @@
         "type_traits": "c",
         "vector": "c",
         "global.h": "c",
-        "ios": "c"
+        "ios": "c",
+        "editor.defaultFormatter": "xaver.clang-format",
+        "editor.formatOnPaste": false,
+        "editor.formatOnSave": false,
+        "42header.username": "atinseau",
+        "42header.email": "atinseau@student.42.fr",
+        "libft.h": "c"
     }
 }

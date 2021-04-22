@@ -17,31 +17,26 @@ PUSH =  $(PILE) \
 
 CHECK = $(PILE) \
 		$(MOVING) \
-		src/check.c src/parse.c
+		$(wildcard src/checker/*.c) \
+		src/parse.c
 		
-
 all:
 	@make all -C libft
 	@gcc -o $(PS) $(PUSH) -Llibft -l ft 
 	@gcc -o $(CH) $(CHECK) -Llibft -l ft 
 
-fclean:
-	@make fclean -C vendor/libft
+clean:
 	@rm -rf $(PS)
 	@rm -rf $(CH) 
+
+fclean: clean
+	@make fclean -C libft
 
 re: fclean all
 
 run: re
-	@valgrind ./push_swap 2 3 1 4 5 8 10 | ./checker 2 3 1 4 5 8 10
+	@valgrind --leak-check=full ./push_swap 2 10 10 | ./checker 2 10 10
 
 valgrind:
 	@sh ../valgrind/run.sh
-	
-
-
-visual:
-	python3 push_swap_visualizer/pyviz.py `ruby -e "puts (-200..200).to_a.shuffle.join(' ')"`
-
-
 	
